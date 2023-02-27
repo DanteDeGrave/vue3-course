@@ -1,40 +1,16 @@
 <template>
+  <navbar></navbar>
   <div class="app">
-    <post-form @create="createPost"/>
-    <post-list
-      :posts="posts"
-      @remove="removePost"
-    />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import PostForm from "@/components/PostForm.vue";
-import PostList from "@/components/PostList.vue";
+import Navbar from "@/components/Navbar.vue";
+
 export default {
-  components: {
-    PostForm, PostList,
-  },
-  data() {
-    return {
-      posts: [
-        {id: 1, title: 'Javascript', body: 'Описание поста'},
-        {id: 2, title: 'Javascript 2', body: 'Описание поста 2'},
-        {id: 3, title: 'Javascript 3', body: 'Описание поста 3'},
-        {id: 4, title: 'Javascript 4', body: 'Описание поста 4'},
-      ],
-      title: '',
-      body: '',
-    }
-  },
-  methods: {
-    createPost(post) {
-      this.posts.push(post);
-    },
-    removePost(post) {
-      this.posts = this.posts.filter(el => el.id !== post.id);
-    },
-  }
+  components: {Navbar}
+
 }
 </script>
 
@@ -47,5 +23,11 @@ export default {
 
 .app {
   padding: 20px;
+}
+
+.app__btns {
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
